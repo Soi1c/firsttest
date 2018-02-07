@@ -1,0 +1,25 @@
+1: span[class="b-panel__header__text"]      CSS
+2: //label[text() = "Имя"]      XPath
+3: //label[text() = "Фамилия"]      XPath
+4: input[name="firstname"]      CSS
+5: input[name="lastname"]       CSS
+6: //label[text()="Дата рождения"]      XPath
+7: div[class="b-date__day"]     CSS
+8: div[class="b-date__month"]       CSS
+9: div[class="b-date__year"]        CSS
+10: //label[text()="Пол"]       XPath
+11: label[data-mnemo="sex-male"] > span > div[class="b-radiogroup__radio"]      CSS
+12: //span[text()="Мужской"]        XPath
+13: label[data-mnemo="sex-female"] > span > div[class="b-radiogroup__radio"]        CSS
+14: //span[text()="Женский"]        XPath
+15: //label[contains(text(),"Желаемый")]        XPath
+16: input[data-blockid="email_name"]        CSS
+17: label[for="password_97"]        CSS
+18: input[id="password_97"]     CSS
+19: div[class="b-password__eye"]        CSS
+20: label[for="phone_29"]       CSS
+21: div[data-blockid="countries"]       CSS
+22: input[data-blockid="number"]        CSS
+23: a[tabindex="10"]        CSS
+24: button      CSS
+25: a[tabindex="12"]        CSS

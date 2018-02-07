@@ -1,0 +1,8 @@
+CSS:
+div[id="tpdiv-logo"] - Логотип в левом верхнем углу
+li[class="tpmenuid3 tptopmenu"] - Форум
+img[src="/images/stories/a1.png"] - Самый большой шрифт
+input[type="text"] - Строка поиска
+a[href="/events"] - гиперссылка "События"
+a[href="http://selenium2.ru/"] - гиперссылка "Selenium"
+a[href="/events/2736-testcon-moscow"][class="contentpagetitle"] - гиперссылка "TestCon Moscow 2018 – Международная конференция по тестированию и обеспечению качества ПО"
