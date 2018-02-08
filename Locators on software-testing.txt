@@ -1,5 +1,5 @@
 CSS:
-div[id="tpdiv-logo"] - Логотип в левом верхнем углу
+#tpdiv-logo - Логотип в левом верхнем углу
 li[class="tpmenuid3 tptopmenu"] - Форум
 img[src="/images/stories/a1.png"] - Самый большой шрифт
 input[type="text"] - Строка поиска
