@@ -1,6 +1,6 @@
-package testng.firsttest.autotests.yaRu;
+package homework.h1.autotests.yaRu;
 
-import testng.firsttest.autotests.MainTests;
+import homework.h1.autotests.MainTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

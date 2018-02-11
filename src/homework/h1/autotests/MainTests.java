@@ -1,4 +1,4 @@
-package testng.firsttest.autotests;
+package homework.h1.autotests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
