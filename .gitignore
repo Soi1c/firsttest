@@ -1,3 +1,3 @@
 .idea/
 target/
-/firsttest.iml
+*.iml
