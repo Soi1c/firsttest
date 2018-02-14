@@ -12,7 +12,8 @@ public class MainTests {
 
     @BeforeTest
     public void beforeEachTest() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        //Хромдрайвер линуксовый
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
