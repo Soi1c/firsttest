@@ -1,19 +1,28 @@
 package homework.yaRu;
 
+import org.openqa.selenium.support.PageFactory;
 import homework.MainTests;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import yandexRU.YaRuMainPage;
+import yandexRU.ResultsPage;
 
 public class WeatherInPenza extends MainTests {
 
+    private static YaRuMainPage yaRuMainPage;
+    private static ResultsPage resultsPage;
+
+    @BeforeClass
+    public void beforeClass(){
+        yaRuMainPage = PageFactory.initElements(driver, YaRuMainPage.class);
+        resultsPage = PageFactory.initElements(driver, ResultsPage.class);
+    }
+
     @Test
-    public void weatherInPenzaFirstLink() {
+    public void checkWeatherInPenzaByFirstLink() {
         driver.get("https://ya.ru/");
-        driver.findElement(By.id("text")).sendKeys("погода пенза", Keys.ENTER);
-        WebElement firstLink =  driver.findElements(By.className("serp-item")).get(0);
-        Assert.assertEquals(firstLink.findElement(By.cssSelector(".link")).getText().contains("Погода в Пензе"), true);
+        yaRuMainPage.searchText("погода пенза");
+        Assert.assertTrue(resultsPage.textOfLinkFromResultPage(1).contains("Погода в Пензе"));
     }
 }
