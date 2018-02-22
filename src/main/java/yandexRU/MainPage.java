@@ -34,7 +34,7 @@ public class MainPage {
     public void setLanguageFromSettings(String language) {
         goToLanguageSettings();
         driver.findElement(By.cssSelector("div[class=\"option__content\"] > div > button ")).click();
-        driver.findElement(By.xpath("//span[@class=\"select__text\" and text() = \"".concat("English").concat("\"]"))).click();
+        driver.findElement(By.xpath("//span[@class=\"select__text\" and text() = \"".concat(language).concat("\"]"))).click();
         driver.findElement(By.cssSelector("button[type = \"submit\"]")).click();
     }
 }
