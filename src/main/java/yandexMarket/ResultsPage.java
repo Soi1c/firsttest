@@ -19,6 +19,7 @@ public class ResultsPage {
     private By sortByPrice = By.cssSelector("div[data-bem*=\"\\\"id\\\":\\\"aprice\\\"\"]");
     private By quantitySelecter = By.cssSelector("button[role = \"listbox\"]");
     private By uprisingPriceSortingIcon = By.cssSelector("div[class*=sorter_sort_asc]");
+    private By decreasingPriceSortingIcon = By.cssSelector("div[class*=sorter_sort_desc]");
 
     private List<WebElement> resultsSet() {
         return driver.findElements(resultLink);
@@ -39,24 +40,40 @@ public class ResultsPage {
         return uprisingPriceSortingIcon != null;
     }
 
+    public boolean isPriceSortingDecreasing() { return decreasingPriceSortingIcon != null; }
+
     public void sortByPrice() {
         driver.findElement(sortByPrice).click();
     }
 
-    public boolean isPriceSortingCorrect(String sorting) {
-        List<WebElement> resultsSet = resultsSet();
+    public boolean isPriceSortingCorrect(String sorting) throws Exception {
+/*        List<WebElement> resultsSet = resultsSet();
         List<Integer> pricesBySorting = new ArrayList<Integer>();
         for (int i = 0; i < resultsSet.size(); i++) {
-            int roublesSymbolPosition = resultsSet.get(i).findElement(By.cssSelector("By.cssSelector(\"div[class = \\\"n-snippet-cell2__main-price\\\"] > a > div\""))
-                    .getText().indexOf("\u20BD") - 1;
-            pricesBySorting.add(Integer.parseInt(resultsSet.get(i).findElement(By.cssSelector("By.cssSelector(\"div[class = \\\"n-snippet-cell2__main-price\\\"] > a > div\""))
-                    .getText().substring(0, roublesSymbolPosition)));
+            WebElement roublesSymbolPosition1 = resultsSet.get(i);
+        String roublesSymbolPosition2 = roublesSymbolPosition1.findElement(By.cssSelector("span[class=\"price\"]")).getText();
+        int roublesSymbolPosition3 = roublesSymbolPosition2.indexOf("&nbsp;");
+            pricesBySorting.add(Integer.parseInt(resultsSet.get(i).findElement(By.cssSelector("span[class=\"price\"]"))
+                    .getText().substring(0, roublesSymbolPosition3)));
+        }*/
+        List<WebElement> resultsSet = resultsSet();
+        List<Integer> priceValues = new ArrayList<Integer>();
+        for (int i = 0; i < resultsSet.size(); i++) {
+            String price = resultsSet.get(i).findElement(By.className("price")).getText();
+            int roublesSymbolPosition = price.indexOf("\u20BD");
+            priceValues.add(Integer.parseInt(price.substring(0, roublesSymbolPosition - 1)));
         }
-        List<Integer> sortedList = pricesBySorting;
+        List<Integer> sortedList = priceValues;
 
-        Collections.sort(pricesBySorting);
+        if (sorting.equals("uprising")) {
 
-        return (pricesBySorting == sortedList);
+            Collections.sort(priceValues);
+
+            return (priceValues == sortedList);
+        } else if (sorting.equals("decreasing")) {
+            Collections.sort(priceValues, Collections.reverseOrder());
+
+            return (priceValues == sortedList);
+        } else throw (new Exception("specify correct sorting"));
     }
-
 }
