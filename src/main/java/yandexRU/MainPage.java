@@ -4,17 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
-
-    private final WebDriver driver;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     private By settingsButton = By.cssSelector("a[data-statlog=\"head.settings\"]");
     private By otherSettings = By.cssSelector("a[data-statlog=\"head.settings.other\"]");
     private By languageSettings = By.cssSelector("a[data-statlog=\"tabs.lang\"]");
     private By localesSelectButton = By.cssSelector("div[class=\"option__content\"] > div > button > span[class=\"button__text\"]");
+
+    private final WebDriver driver;
+    public MainPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public String localesSelectButtonText() {
         return driver.findElement(localesSelectButton).getText();

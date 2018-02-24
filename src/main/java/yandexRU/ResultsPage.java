@@ -7,10 +7,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class ResultsPage {
-    private final WebDriver driver;
-
     private By resultLink = By.className("serp-item");
 
+    private final WebDriver driver;
     public ResultsPage(WebDriver driver) {
         this.driver = driver;
     }

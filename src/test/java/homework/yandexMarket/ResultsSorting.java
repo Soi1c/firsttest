@@ -5,8 +5,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import yandexMarket.MainPage;
-import yandexMarket.ResultsPage;
+
+
 
 public class ResultsSorting extends MainTests {
 
@@ -17,14 +17,6 @@ public class ResultsSorting extends MainTests {
     public void beforeClass(){
         MainPage = PageFactory.initElements(driver, yandexMarket.MainPage.class);
         ResultsPage = PageFactory.initElements(driver, yandexMarket.ResultsPage.class);
-    }
-
-    @Test
-    public void getQuantityOfResultsOnSearchPage() {
-        driver.get("https://market.yandex.ru/");
-        MainPage.searchText("ручка");
-        ResultsPage.setResultsQuantityOnPage(12);
-        Assert.assertEquals(ResultsPage.actualQuantityOfResultsOnPage(), 12);
     }
 
     @Test
