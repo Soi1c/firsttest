@@ -24,6 +24,6 @@ public class QuantityOfResults extends MainTests {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
         ResultsPage.setResultsQuantityOnPage(12);
-        Assert.assertEquals(ResultsPage.actualQuantityOfResultsOnPage(), 12);
+        Assert.assertEquals(ResultsPage.getActualQuantityOfResultsOnPage(), 12);
     }
 }

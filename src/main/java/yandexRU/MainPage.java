@@ -14,7 +14,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public String localesSelectButtonText() {
+    public String getLocalesSelectButtonText() {
         return driver.findElement(localesSelectButton).getText();
     }
 

@@ -22,6 +22,6 @@ public class ChangeLanguage extends MainTests {
         driver.get("https://yandex.ru/");
         MainPage.setLanguageFromSettings("English");
         MainPage.goToLanguageSettings();
-        Assert.assertEquals(MainPage.localesSelectButtonText(), "English");
+        Assert.assertEquals(MainPage.getLocalesSelectButtonText(), "English");
     }
 }

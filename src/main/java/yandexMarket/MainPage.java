@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class MainPage {
     private By searchField = By.id("header-search");
-    private By searchButton = By.cssSelector("button[type = \"submit\"]");
 
     private final WebDriver driver;
     public MainPage(WebDriver driver) {

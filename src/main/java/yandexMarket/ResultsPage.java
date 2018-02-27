@@ -3,7 +3,6 @@ package yandexMarket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,7 +22,7 @@ public class ResultsPage {
         this.driver = driver;
     }
 
-    private List<WebElement> resultsSet() {
+    private List<WebElement> getResultsSet() {
         return driver.findElements(resultLink);
     }
 
@@ -34,8 +33,8 @@ public class ResultsPage {
                 .concat("\"]")))).click();
     }
 
-    public int actualQuantityOfResultsOnPage() {
-        return resultsSet().size();
+    public int getActualQuantityOfResultsOnPage() {
+        return getResultsSet().size();
     }
 
     public boolean isPriceSortingUprising() {
@@ -48,9 +47,24 @@ public class ResultsPage {
         driver.findElement(sortByPrice).click();
     }
 
-    public boolean isPriceSortingCorrect(String sorting) throws Exception {
+    public boolean isPriceSortingCorrect(List<Integer> listToCheckSorting, String sorting) throws Exception {
         Thread.sleep(2000);
-        List<WebElement> resultsSet = resultsSet();
+        List<Integer> sortedList = listToCheckSorting;
+
+        if (sorting.equals("uprising")) {
+            Collections.sort(listToCheckSorting);
+            return (listToCheckSorting == sortedList);
+        }
+        else if (sorting.equals("decreasing"))
+        {
+            Collections.sort(listToCheckSorting, Collections.reverseOrder());
+            return (listToCheckSorting == sortedList);
+        }
+        else throw (new Exception("specify correct sorting"));
+    }
+
+    public List<Integer> getPricesOnSearchPage() {
+        List<WebElement> resultsSet = getResultsSet();
         List<Integer> priceValues = new ArrayList<Integer>();
         WebElement explicitWaitForPrice = (new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className("price"))));
         for (int i = 0; i < resultsSet.size(); i++) {
@@ -59,17 +73,6 @@ public class ResultsPage {
             int roublesSymbolPosition = price.indexOf("\u20BD");
             priceValues.add(Integer.parseInt(price.substring(0, roublesSymbolPosition)));
         }
-        List<Integer> sortedList = priceValues;
-
-        if (sorting.equals("uprising")) {
-            Collections.sort(priceValues);
-            return (priceValues == sortedList);
-        }
-        else if (sorting.equals("decreasing"))
-        {
-            Collections.sort(priceValues, Collections.reverseOrder());
-            return (priceValues == sortedList);
-        }
-        else throw (new Exception("specify correct sorting"));
+        return priceValues;
     }
 }

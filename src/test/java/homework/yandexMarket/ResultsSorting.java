@@ -25,7 +25,7 @@ public class ResultsSorting extends MainTests {
         MainPage.searchText("ручка");
         ResultsPage.sortByPrice();
         Assert.assertTrue(ResultsPage.isPriceSortingUprising());
-        Assert.assertTrue(ResultsPage.isPriceSortingCorrect("uprising"));
+        Assert.assertTrue(ResultsPage.isPriceSortingCorrect(ResultsPage.getPricesOnSearchPage(),"uprising"));
     }
 
     @Test
@@ -35,6 +35,6 @@ public class ResultsSorting extends MainTests {
         ResultsPage.sortByPrice();
         ResultsPage.sortByPrice();
         Assert.assertTrue(ResultsPage.isPriceSortingDecreasing());
-        Assert.assertTrue(ResultsPage.isPriceSortingCorrect("decreasing"));
+        Assert.assertTrue(ResultsPage.isPriceSortingCorrect(ResultsPage.getPricesOnSearchPage(), "decreasing"));
     }
 }

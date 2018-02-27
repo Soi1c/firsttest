@@ -14,15 +14,11 @@ public class ResultsPage {
         this.driver = driver;
     }
 
-    private List<WebElement> resultsSet() {
+    private List<WebElement> getResultsSet() {
         return driver.findElements(resultLink);
     }
 
-    private WebElement linkFromResultsPage(int numberOfLink) {
-        return resultsSet().get(numberOfLink - 1);
-    }
-
     public String textOfLinkFromResultPage(int numberOfLink) {
-        return resultsSet().get(numberOfLink - 1).getText();
+        return getResultsSet().get(numberOfLink - 1).getText();
     }
 }
