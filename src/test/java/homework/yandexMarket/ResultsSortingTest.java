@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ResultsSorting extends MainTests {
+public class ResultsSortingTest extends MainTests {
 
     private static yandexMarket.MainPage MainPage;
     private static yandexMarket.ResultsPage ResultsPage;
@@ -20,7 +20,7 @@ public class ResultsSorting extends MainTests {
     }
 
     @Test
-    public void uprisingSorting() throws Exception {
+    public void uprisingSortingTest() throws Exception {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
         ResultsPage.sortByPrice();
@@ -29,7 +29,7 @@ public class ResultsSorting extends MainTests {
     }
 
     @Test
-    public void decreasingSorting() throws Exception {
+    public void decreasingSortingTest() throws Exception {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
         ResultsPage.sortByPrice();

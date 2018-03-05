@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import yandexMarket.MainPage;
 import yandexMarket.ResultsPage;
 
-public class QuantityOfResults extends MainTests {
+public class QuantityOfResultsTest extends MainTests {
 
     private static yandexMarket.MainPage MainPage;
     private static yandexMarket.ResultsPage ResultsPage;
@@ -20,7 +20,7 @@ public class QuantityOfResults extends MainTests {
     }
 
     @Test
-    public void getQuantityOfResultsOnSearchPage() {
+    public void getQuantityOfResultsOnSearchPageTest() {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
         ResultsPage.setResultsQuantityOnPage(12);

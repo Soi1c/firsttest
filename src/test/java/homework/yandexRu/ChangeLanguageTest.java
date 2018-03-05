@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import yandexRU.MainPage;
 
-public class ChangeLanguage extends MainTests {
+public class ChangeLanguageTest extends MainTests {
 
 
     private static MainPage MainPage;
@@ -18,7 +18,7 @@ public class ChangeLanguage extends MainTests {
     }
 
     @Test
-    public void changeLanguageOfYandexSearchToEnglish() {
+    public void changeLanguageOfYandexSearchToEnglishTest() {
         driver.get("https://yandex.ru/");
         MainPage.setLanguageFromSettings("English");
         MainPage.goToLanguageSettings();

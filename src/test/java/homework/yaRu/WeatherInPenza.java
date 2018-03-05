@@ -20,7 +20,7 @@ public class WeatherInPenza extends MainTests {
     }
 
     @Test
-    public void checkWeatherInPenzaByFirstLink() {
+    public void checkWeatherInPenzaByFirstLinkTest() {
         driver.get("https://ya.ru/");
         yaRuMainPage.searchText("погода пенза");
         Assert.assertTrue(resultsPage.textOfLinkFromResultPage(1).contains("Погода в Пензе"));
