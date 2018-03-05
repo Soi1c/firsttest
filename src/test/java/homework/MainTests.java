@@ -13,7 +13,7 @@ public class MainTests {
     @BeforeSuite
     public void setup() {
         //Хромдрайвер линуксовый
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/usr/local/share/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
