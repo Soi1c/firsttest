@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import yandexRU.YaRuMainPage;
 import yandexRU.ResultsPage;
 
-public class WeatherInPenza extends MainTests {
+public class WeatherInPenzaTest extends MainTests {
 
     private static YaRuMainPage yaRuMainPage;
     private static ResultsPage resultsPage;

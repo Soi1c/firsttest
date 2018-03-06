@@ -14,13 +14,13 @@ public class QuantityOfResultsTest extends MainTests {
     private static yandexMarket.ResultsPage ResultsPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         MainPage = PageFactory.initElements(driver, MainPage.class);
         ResultsPage = PageFactory.initElements(driver, ResultsPage.class);
     }
 
     @Test
-    public void getQuantityOfResultsOnSearchPageTest() {
+    public void getQuantityOfResultsOnSearchPageTest() throws InterruptedException {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
         ResultsPage.setResultsQuantityOnPage(12);

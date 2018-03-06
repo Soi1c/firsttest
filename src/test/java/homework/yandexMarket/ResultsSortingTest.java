@@ -23,6 +23,7 @@ public class ResultsSortingTest extends MainTests {
     public void uprisingSortingTest() throws Exception {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
+        ResultsPage.setResultsQuantityOnPage(12);
         ResultsPage.sortByPrice();
         Assert.assertTrue(ResultsPage.isPriceSortingUprising());
         Assert.assertTrue(ResultsPage.isPriceSortingCorrect(ResultsPage.getPricesOnSearchPage(),"uprising"));
@@ -32,6 +33,7 @@ public class ResultsSortingTest extends MainTests {
     public void decreasingSortingTest() throws Exception {
         driver.get("https://market.yandex.ru/");
         MainPage.searchText("ручка");
+        ResultsPage.setResultsQuantityOnPage(12);
         ResultsPage.sortByPrice();
         ResultsPage.sortByPrice();
         Assert.assertTrue(ResultsPage.isPriceSortingDecreasing());
