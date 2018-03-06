@@ -4,12 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultsPage {
     private By resultLink = By.cssSelector("div[class*=\"n-snippet-cell2\"][data-bem*=\"type\\\":\\\"offer\\\"\"]");
@@ -53,9 +51,9 @@ public class ResultsPage {
         driver.findElement(sortByPrice).click();
     }
 
-    public boolean isPriceSortingCorrect(List<Integer> listToCheckSorting, String sorting) throws Exception {
+    public boolean isPriceSortingCorrect(List<String> listToCheckSorting, String sorting) throws Exception {
         Thread.sleep(2000);
-        List<Integer> sortedList = listToCheckSorting;
+        List<String> sortedList = listToCheckSorting;
 
         if (sorting.equals("uprising")) {
             Collections.sort(listToCheckSorting);
@@ -69,17 +67,11 @@ public class ResultsPage {
         else throw (new Exception("specify correct sorting"));
     }
 
-    public List<Integer> getPricesOnSearchPage() throws InterruptedException {
-        List<WebElement> resultsSet = getResultsSet();
-        List<Integer> priceValues = new ArrayList<Integer>();
-        WebElement explicitWaitForPrice = (new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className("price"))));
-        Thread.sleep(3000);
-        for (int i = 0; i < resultsSet.size(); i++) {
-            String price = resultsSet.get(i).findElement(By.cssSelector("div[class = \"price\"]")).getText();
-            price = price.replaceAll("\\s","");
-            int roublesSymbolPosition = price.indexOf("\u20BD");
-            priceValues.add(Integer.parseInt(price.substring(0, roublesSymbolPosition)));
-        }
-        return priceValues;
+    public List getPricesOnSearchPage() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> pricesString = driver.findElements(By.className("price"));
+        return (List)pricesString.stream().map((e) -> {
+            return e.getText();
+        }).collect(Collectors.toList());
     }
 }
